@@ -17,7 +17,7 @@ public class CardDeliveryTest {
 
     @BeforeEach
     void setup() {
-        
+
         open("http://localhost:9999");
     }
 
@@ -33,8 +33,6 @@ public class CardDeliveryTest {
         $("[data-test-id='date'] input").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id='name'] input").setValue(validUser.getName());
         $("[data-test-id='phone'] input").setValue(validUser.getPhone());
-        //проблема с форматом телефона
-        //$("[data-test-id='phone'] input").setValue("+79253332211");
         $("[data-test-id='agreement']").click();
         $(".button__text").click();
         $("[data-test-id='success-notification'] .notification__title")
