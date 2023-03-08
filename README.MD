@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/d2kvds3tta5qp813/branch/main?svg=true)](https://ci.appveyor.com/project/Gis192/dzavpatterns/branch/main)
