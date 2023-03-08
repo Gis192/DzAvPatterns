@@ -18,19 +18,19 @@ public class DataGenerator {
     }
 
     public static String generateCity() {
-        String[] cities = new String[]{"Архангельск", "Астрахань", "Ростов-на-Дону", "Ставврополь", "Краснодар",
-                "Москва", "Воронеж", "Липецк", "Тула", "Тверь", "Нижний", "Новгород", "Петрозаводск",
+        String[] cities = new String[]{"Архангельск", "Астрахань", "Ростов-на-Дону", "Ставрополь", "Краснодар",
+                "Москва", "Воронеж", "Липецк", "Тула", "Тверь", "Нижний Новгород", "Петрозаводск",
                 "Екатеринбург", "Омск", "Петропавловск-Камчатский", "Белгород", "Кострома"};
         return cities[new Random().nextInt(cities.length)];
     }
 
     public static String generateName(String locale) {
-        Faker faker = new Faker(new Locale(locale));
+        var faker = new Faker(new Locale(locale));
         return faker.name().lastName() + " " + faker.name().firstName();
     }
 
     public static String generatePhone(String locale) {
-        Faker faker = new Faker(new Locale(locale));
+        var faker = new Faker(new Locale("ru"));
         return faker.phoneNumber().phoneNumber();
     }
 
