@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -17,7 +17,7 @@ public class CardDeliveryTest {
 
     @BeforeEach
     void setup() {
-        //Configuration.holdBrowserOpen = true;
+        
         open("http://localhost:9999");
     }
 
@@ -37,9 +37,16 @@ public class CardDeliveryTest {
         //$("[data-test-id='phone'] input").setValue("+79253332211");
         $("[data-test-id='agreement']").click();
         $(".button__text").click();
-        $("div[data-test-id='notification']").should(appear, Duration.ofSeconds(15)).shouldHave(Condition.text("Успешно!"));
-        $("div[data-test-id='notification']").should(appear, Duration.ofSeconds(15)).shouldHave(Condition.text("Встреча успешно забронирована на " + firstMeetingDate));
-
+        $("[data-test-id='success-notification'] .notification__title")
+                .shouldHave(exactText("Успешно!"));
+        $("[data-test-id='success-notification'] .notification__content")
+                .shouldHave(exactText("Встреча успешно запланирована на " + firstMeetingDate))
+                       .should(visible);
+        $("[data-test-id='date'] input").doubleClick().sendKeys(secondMeetingDate);
+        $(".button__text").click();
+        $("[data-test-id='replan-notification'] .notification__content")
+                .shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"))
+                .shouldBe(visible);
     }
 
 }
